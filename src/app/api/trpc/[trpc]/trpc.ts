@@ -5,7 +5,6 @@ import { getServerSession } from "next-auth";
 import superjson from "superjson";
 import { ZodError } from "zod";
 
-import { prisma } from "@/utils/db";
 
 import { options } from "../../auth/[...nextauth]/options";
 
@@ -13,7 +12,6 @@ export const createTRPCContext = async (opts: FetchCreateContextFnOptions) => {
   const session = await getServerSession(options);
   return {
     session,
-    prisma,
     drizzle: drizzleDB,
   };
 };
