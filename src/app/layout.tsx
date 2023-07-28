@@ -18,9 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <AuthProvider>
-          <TrpcProvider>
-            {children}
-          </TrpcProvider>
+          <TrpcProvider>{children}</TrpcProvider>
         </AuthProvider>
       </body>
     </html>

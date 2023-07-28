@@ -5,7 +5,6 @@ import { getServerSession } from "next-auth";
 import superjson from "superjson";
 import { ZodError } from "zod";
 
-
 import { options } from "../../auth/[...nextauth]/options";
 
 export const createTRPCContext = async (opts: FetchCreateContextFnOptions) => {

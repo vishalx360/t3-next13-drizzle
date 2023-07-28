@@ -71,8 +71,8 @@ export const options: NextAuthOptions = {
     GithubProvider({
       clientId: env.GITHUB_CLIENT_ID,
       clientSecret: env.GITHUB_CLIENT_SECRET,
-      allowDangerousEmailAccountLinking: true
-    })
+      allowDangerousEmailAccountLinking: true,
+    }),
   ],
   pages: {
     signIn: "/signin",
