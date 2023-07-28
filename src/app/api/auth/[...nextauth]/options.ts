@@ -1,6 +1,7 @@
 import { users } from "drizzle/schema";
 import { eq } from "drizzle-orm";
 import { type DefaultSession, type NextAuthOptions } from "next-auth";
+import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 import LinkedinProvider from "next-auth/providers/linkedin";
 
@@ -67,22 +68,11 @@ export const options: NextAuthOptions = {
   },
   providers: [
     // oauth providers
-    GoogleProvider({
-      allowDangerousEmailAccountLinking: true,
-      clientId: env.GOOGLE_CLIENT_ID,
-      clientSecret: env.GOOGLE_CLIENT_SECRET,
-      authorization: {
-        params: {
-          prompt: "consent",
-          access_type: "offline",
-          response_type: "code",
-        },
-      },
-    }),
-    LinkedinProvider({
-      clientId: env.LINKEDIN_CLIENT_ID,
-      clientSecret: env.LINKEDIN_CLIENT_SECRET,
-    }),
+    GithubProvider({
+      clientId: env.GITHUB_CLIENT_ID,
+      clientSecret: env.GITHUB_CLIENT_SECRET,
+      allowDangerousEmailAccountLinking: true
+    })
   ],
   pages: {
     signIn: "/signin",

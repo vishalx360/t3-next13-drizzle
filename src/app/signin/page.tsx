@@ -1,10 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { LucideGithub } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { signIn, useSession } from "next-auth/react";
-import { FaLinkedin } from "react-icons/fa";
-import { FcGoogle } from "react-icons/fc";
 
 import { Button } from "@/components/ui/button";
 
@@ -45,25 +44,14 @@ export default function SignInPage() {
               <div className="flex flex-col items-center gap-2">
                 <Button
                   onClick={() => {
-                    void handelOauthSignin("google");
+                    void handelOauthSignin("github");
                   }}
                   variant="outline"
                   className="text-md flex w-full items-center justify-center gap-4"
                   size="lg"
-                  LeftIcon={<FcGoogle />}
+                  LeftIcon={<LucideGithub />}
                 >
-                  Google
-                </Button>
-                <Button
-                  onClick={() => {
-                    void handelOauthSignin("linkedin");
-                  }}
-                  variant="outline"
-                  className="text-md flex w-full items-center justify-center gap-4"
-                  size="lg"
-                  LeftIcon={<FaLinkedin />}
-                >
-                  Linkedin
+                  Github
                 </Button>
               </div>
 
