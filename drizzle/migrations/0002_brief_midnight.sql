@@ -1,0 +1,1 @@
+ALTER TABLE "Todo" RENAME TO "todos";
