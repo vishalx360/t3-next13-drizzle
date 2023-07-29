@@ -6,8 +6,6 @@ import { getFetch, httpBatchLink, loggerLink } from "@trpc/client";
 import { useState } from "react";
 import superjson from "superjson";
 
-import { env } from "@/env.mjs";
-
 import { trpc } from "./trpc";
 
 export const TrpcProvider: React.FC<{ children: React.ReactNode }> = ({
@@ -21,14 +19,12 @@ export const TrpcProvider: React.FC<{ children: React.ReactNode }> = ({
             staleTime: 5000,
             refetchOnWindowFocus: false,
             retry: false,
-          },
+          }
         },
       })
   );
 
-  const url = env.NEXT_PUBLIC_VERCEL_URL
-    ? `https://${env.NEXT_PUBLIC_VERCEL_URL}`
-    : "http://localhost:3000/api/trpc";
+  const url = `${process.env.NEXT_PUBLIC_HOST_URL}/api/trpc`
 
   const [trpcClient] = useState(() =>
     trpc.createClient({
