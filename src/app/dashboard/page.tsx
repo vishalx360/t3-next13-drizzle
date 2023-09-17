@@ -1,6 +1,5 @@
 "use client";
 
-import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { createId } from "@paralleldrive/cuid2";
 import { Todo } from "drizzle/schema";
 import { Field, Form, Formik } from "formik";
@@ -19,7 +18,6 @@ import { trpc } from "@/utils/trpc";
 import { addTodoSchema } from "@/utils/ValidationSchema";
 
 function Dashboard() {
-  const [parent] = useAutoAnimate();
 
   const api = trpc.useContext();
   const { data: session, status } = useSession({
@@ -115,7 +113,6 @@ function Dashboard() {
                 <TodoListSkeleton NumberOfTasks={5} />
               ) : (
                 <div
-                  ref={parent}
                   className="my-5 max-h-52 space-y-5 overflow-y-scroll"
                 >
                   {todos?.map((todo) => (
