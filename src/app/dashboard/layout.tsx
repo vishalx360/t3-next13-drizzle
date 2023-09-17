@@ -14,7 +14,7 @@ async function DashboardLayout({ children }: { children: React.ReactNode }) {
         {!data?.user ? (
           <div className="flex flex-col items-center justify-center gap-5">
             <AlertTriangle className="text-yellow-500" size={30} />
-            <Link className="underline" href="/signin">
+            <Link className="underline" href="/api/auth/signin">
               Please Signin to visit dashboard
             </Link>
           </div>

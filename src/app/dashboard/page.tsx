@@ -17,7 +17,7 @@ function Dashboard() {
     onUnauthenticated() {
       return {
         redirect: {
-          destination: "/signin",
+          destination: "/api/auth/signinsignin",
           permanent: false,
         },
       };

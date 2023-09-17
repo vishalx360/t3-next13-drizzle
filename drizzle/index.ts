@@ -3,8 +3,7 @@ import "dotenv/config";
 import { neon, neonConfig } from "@neondatabase/serverless";
 import {
   drizzle,
-  NeonHttpClient,
-  NeonHttpDatabase,
+  NeonHttpDatabase
 } from "drizzle-orm/neon-http";
 
 neonConfig.fetchConnectionCache = true;

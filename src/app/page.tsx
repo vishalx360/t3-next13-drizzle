@@ -10,7 +10,7 @@ export default function HomePage() {
     router.push("/dashboard");
   }
   if (status === "unauthenticated") {
-    router.push("/signin");
+    router.push("/api/auth/signin");
   }
   return (
     <>
