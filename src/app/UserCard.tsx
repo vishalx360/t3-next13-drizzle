@@ -2,7 +2,6 @@
 
 import { Session } from "next-auth";
 import { signOut } from "next-auth/react";
-import React from "react";
 
 function UserCard({ session }: { session: Session }) {
   return (

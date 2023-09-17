@@ -19,12 +19,12 @@ export const TrpcProvider: React.FC<{ children: React.ReactNode }> = ({
             staleTime: 5000,
             refetchOnWindowFocus: false,
             retry: false,
-          }
+          },
         },
       })
   );
 
-  const url = `${process.env.NEXT_PUBLIC_HOST_URL}/api/trpc`
+  const url = `${process.env.NEXT_PUBLIC_HOST_URL}/api/trpc`;
 
   const [trpcClient] = useState(() =>
     trpc.createClient({

@@ -1,13 +1,13 @@
 import { createId } from "@paralleldrive/cuid2";
 import { todos } from "drizzle/schema";
-import { and, asc, desc, eq } from "drizzle-orm";
+import { and, desc, eq } from "drizzle-orm";
 import { z } from "zod";
 
 import { createTRPCRouter, protectedProcedure } from "../[trpc]/trpc";
 
 export const TodoRouter = createTRPCRouter({
   // CREATE
-  addTodo: protectedProcedure
+  add: protectedProcedure
     .input(z.object({ title: z.string(), id: z.string().optional() }))
     .mutation(async ({ ctx, input }) => {
       return ctx.drizzle
@@ -21,7 +21,7 @@ export const TodoRouter = createTRPCRouter({
     }),
 
   // READ
-  getTodos: protectedProcedure.query(async ({ ctx }) => {
+  get: protectedProcedure.query(async ({ ctx }) => {
     return ctx.drizzle
       .select()
       .from(todos)
@@ -30,7 +30,7 @@ export const TodoRouter = createTRPCRouter({
   }),
 
   // UPDATE
-  updateTodo: protectedProcedure
+  update: protectedProcedure
     .input(
       z.object({ id: z.string(), title: z.string(), completed: z.boolean() })
     )
@@ -48,7 +48,7 @@ export const TodoRouter = createTRPCRouter({
     }),
 
   // DELETE
-  deleteTodo: protectedProcedure
+  delete: protectedProcedure
     .input(z.object({ id: z.string() }))
     .mutation(async ({ ctx, input }) => {
       return ctx.drizzle
@@ -57,4 +57,10 @@ export const TodoRouter = createTRPCRouter({
           and(eq(todos.userId, ctx.session.user.id), eq(todos.id, input.id))
         );
     }),
+  // DELETE ALL
+  clearAll: protectedProcedure.mutation(async ({ ctx }) => {
+    return ctx.drizzle
+      .delete(todos)
+      .where(eq(todos.userId, ctx.session.user.id));
+  }),
 });

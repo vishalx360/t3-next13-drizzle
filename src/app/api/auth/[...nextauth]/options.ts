@@ -2,8 +2,6 @@ import { users } from "drizzle/schema";
 import { eq } from "drizzle-orm";
 import { type DefaultSession, type NextAuthOptions } from "next-auth";
 import GithubProvider from "next-auth/providers/github";
-import GoogleProvider from "next-auth/providers/google";
-import LinkedinProvider from "next-auth/providers/linkedin";
 
 import { drizzleDB } from "@/../drizzle";
 import { DrizzleAdapter } from "@/../drizzle/drizzle-next-auth-adapter";
